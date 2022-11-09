@@ -106,7 +106,7 @@
                                 <Button x:Name="NextReservationButton" Content="Next" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="29" Width="100" Margin="0,0,10,10" Click="GoToReceiptBtn_Click"/>
                             </Grid>
                         </TabItem>
-                        <TabItem x:Name="RecieptTab" Header="Invoice" Width="100" IsEnabled="False">
+                        <TabItem x:Name="InvoiceTab" Header="Invoice" Width="100" IsEnabled="False">
                             <Grid Background="#FFE5E5E5">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="700" Height="300">
                                     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" MinWidth="300" Margin="0,0,10,0">
@@ -124,7 +124,7 @@
                                             <TextBox x:Name="RecieptPhoneCountryCodeTbx" Height="23" Margin="0,8,5,0" TextWrapping="Wrap" Width="30" IsEnabled="False"/>
                                             <TextBox x:Name="RecieptPhoneNoTbx" Height="23" Margin="0,8,0,0" TextWrapping="Wrap" Width="203" IsEnabled="False"/>
                                         </StackPanel>
-                                        <GroupBox Header="预订房间" Margin="10,10,5,0">
+                                        <GroupBox Header="Room" Margin="10,10,5,0">
                                             <StackPanel x:Name="RecieptRooms" Orientation="Vertical" Height="105"/>
                                         </GroupBox>
                                     </StackPanel>
@@ -179,7 +179,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem x:Name="ManageTab" Header="Admin" Width="130">
+            <TabItem x:Name="AdminTab" Header="Admin" Width="130">
                 <Grid Background="#FFE5E5E5">
                     <TabControl x:Name="ManageSelectTab">
                         <TabItem x:Name="RoomsManagementTab" Header="Rooms" VerticalAlignment="Bottom" Width="100" Height="25">

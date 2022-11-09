@@ -108,7 +108,7 @@ namespace HotelManagementSystem
 
         private void LoadFloor(int floor)
         {
-            FloorLbl.Content = (SelectFloorCbx.SelectedIndex + 1) + "Hotel";
+            FloorLbl.Content = (SelectFloorCbx.SelectedIndex + 1);
             RoomsBox.Children.Clear();
             RoomsBox.RowDefinitions.Clear();
             RoomsBox.ColumnDefinitions.Clear();
@@ -161,17 +161,17 @@ namespace HotelManagementSystem
 
         private void refreshTabsStatus()
         {
-            if (RecieptTab.IsSelected == true)
-                RecieptTab.IsEnabled = true;
+            if (InvoiceTab.IsSelected == true)
+                InvoiceTab.IsEnabled = true;
             else if (ContractsDetailsTab.IsSelected == true)
             {
-                RecieptTab.IsEnabled = false;
+                InvoiceTab.IsEnabled = false;
                 ContractsDetailsTab.IsEnabled = true;
             }
             else if (AvailabilityTab.IsSelected == true)
             {
                 ContractsDetailsTab.IsEnabled = false;
-                RecieptTab.IsEnabled = false;
+                InvoiceTab.IsEnabled = false;
             }
         }
 

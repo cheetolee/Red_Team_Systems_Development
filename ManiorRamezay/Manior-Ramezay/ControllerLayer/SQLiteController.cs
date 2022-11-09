@@ -52,6 +52,8 @@ namespace ControllerLayer
             cmdCreateTable.ExecuteNonQuery();
             cmdCreateTable.CommandText = "DROP TABLE ROOMPRICE;";
             cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "DROP TABLE CUSTOMER;";
+            cmdCreateTable.ExecuteNonQuery();
 
 
             cmdCreateTable.CommandText = "CREATE TABLE IF NOT EXISTS Room(ROOMID varchar, ROOMNUM varchar,RTYPE varchar,RSTATUS varchar );";
@@ -76,9 +78,11 @@ namespace ControllerLayer
             cmdCreateTable.ExecuteNonQuery();
 
             
-            cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('1', 'Patrick', 'male', '31', '8192398520', '8192398520', '111', '2', 'null', '123 Fake Street');";
+            cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('1', 'Patrick', 'Male', '31', '8192398520', '8192398520', '1', '1', 'Vanier', '123 Fake Street');";
             cmdCreateTable.ExecuteNonQuery();
             cmdCreateTable.CommandText = "INSERT INTO Booking VALUES('1', '20221101', '20221107', '7 days', '1', 'Junior', '100', '1', '1', 'Confirmed');";
+            cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "INSERT INTO Booking VALUES('2', '20221108', '20221110', '2pm', '1', 'Junior', '100', '1', '2', 'Confirmed');";
             cmdCreateTable.ExecuteNonQuery();
             cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('1', '2', 'Junior', 'Idle');";
             cmdCreateTable.ExecuteNonQuery();

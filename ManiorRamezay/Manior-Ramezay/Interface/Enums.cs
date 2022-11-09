@@ -27,19 +27,19 @@
     // Room status
     public enum RoomStatus
     {
-        Idle,       
-        Occupied,   
-        NA          
+        Idle, // Available       
+        Occupied, // Unavailable
+        NA  // Not Available (To be cleaned, being reparied)           
     }
 
-    // Room type
+    // Room types at Manior Ramezay
     public enum RoomType
     {
-        Junior,
-        Double,
-        Triple,
-        OneBed,
-        TwoBed,
-        EconTwin
+        Standard,
+        Deluxe,
+        FireplaceSuite,
+        QueenSuite,
+        KingSuite,
+        RoyalSuite
     }
 }

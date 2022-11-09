@@ -143,6 +143,10 @@
       <Project>{d511a8f5-2315-4ea0-bf84-f49f4c0ecb91}</Project>
       <Name>Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{0081738D-4966-48D4-B483-C68AE2E999F9}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

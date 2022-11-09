@@ -4,15 +4,14 @@ using System.Windows;
 using System.Windows.Controls;
 using ControllerLayer;
 using Interface;
+using Model;
 
 namespace HotelManagementSystem
 {
-    /// <summary>
-    /// Made by Chaogeb
-    /// </summary>
+
     public partial class CheckOutWindow : Window
     {
-        UIController facade = UIController.GetInstance();
+        UIController mainWindow = UIController.GetInstance();
         IReservation reservation;
         IBooking booking;
         ICustomer contract;
@@ -26,7 +25,7 @@ namespace HotelManagementSystem
         public CheckOutWindow(IRoom rm)
         {
             room = rm;
-            var book = facade.GetActiveBookings(null);
+            var book = mainWindow.GetActiveBookings(null);
             foreach (IBooking bktemp in book)
             {
                 if (bktemp.RoomID == room.ID)
@@ -40,16 +39,16 @@ namespace HotelManagementSystem
         }
         public CheckOutWindow(string bookingid)
         {
-            booking = facade.GetBooking(bookingid);
-            room = facade.GetRoom(booking.RoomID);
+            booking = mainWindow.GetBooking(bookingid);
+            room = mainWindow.GetRoom(booking.RoomID);
             InitializeComponent();
             InitializeWindowContent();
         }
 
         private void InitializeWindowContent()
         {
-            reservation = facade.GetReservation(booking.ReservationID);
-            contract = facade.GetCustomer(booking.ContractID);
+            reservation = mainWindow.GetReservation(booking.ReservationID);
+            contract = mainWindow.GetCustomer(booking.ContractID);
             
             reservationNumber.Content = reservation.ID;
             checkInDate.Content = booking.StartDate.ToLongDateString().ToString();
@@ -71,11 +70,11 @@ namespace HotelManagementSystem
 
         private void LoadRoomList()
         {
-            bookinglist = facade.GetActiveBookings(reservation.ID);
+            bookinglist = mainWindow.GetActiveBookings(reservation.ID);
             foreach (IBooking bk in bookinglist)
             {
                 if (bk.RoomID != "")
-                    roomlist.Add(facade.GetRoom(bk.RoomID));
+                    roomlist.Add(mainWindow.GetRoom(bk.RoomID));
             }
             int i = 0;
             try
@@ -113,7 +112,7 @@ namespace HotelManagementSystem
                 {
                     foreach (IBooking bk in bookinglist)
                     {
-                        if (bk.RoomID != "" && facade.GetRoom(bk.RoomID).RoomNum == cbx.Content.ToString())
+                        if (bk.RoomID != "" && mainWindow.GetRoom(bk.RoomID).RoomNum == cbx.Content.ToString())
                         {
                             roomsprice += bk.ThisPrice;
                             break;
@@ -144,15 +143,15 @@ namespace HotelManagementSystem
                         }
                     }
                 }
-                facade.UpdateReservation(reservation);
-                facade.RefreshRooms(rmlst);
+                mainWindow.UpdateReservation(reservation);
+                mainWindow.RefreshRooms(rmlst);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("参数错误！" + ex);
             }
             MessageBox.Show("离店成功！");
-            facade.Log_CheckOut(booking);
+            mainWindow.Log_CheckOut(booking);
             this.Close();
         }
 

@@ -25,7 +25,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label x:Name="roomTypeLbl" Content="RoomType：" Margin="0,0,5,0"/>
-                            <Label x:Name="roomType" Content="junior"/>
+                            <Label x:Name="roomType" Content="Standard"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label x:Name="checkInDateLbl" Content="Check-in：" Margin="0,0,5,0"/>

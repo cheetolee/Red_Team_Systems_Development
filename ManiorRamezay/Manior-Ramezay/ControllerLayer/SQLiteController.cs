@@ -80,19 +80,19 @@ namespace ControllerLayer
             
             cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('1', 'Patrick', 'Male', '31', '8192398520', '8192398520', '1', '1', 'Vanier', '123 Fake Street');";
             cmdCreateTable.ExecuteNonQuery();
-            cmdCreateTable.CommandText = "INSERT INTO Booking VALUES('1', '20221101', '20221107', '7 days', '1', 'Junior', '100', '1', '1', 'Confirmed');";
+            cmdCreateTable.CommandText = "INSERT INTO Booking VALUES('1', '20221101', '20221107', '7 days', '1', 'Standard', '100', '1', '1', 'Confirmed');";
             cmdCreateTable.ExecuteNonQuery();
-            cmdCreateTable.CommandText = "INSERT INTO Booking VALUES('2', '20221108', '20221110', '2pm', '1', 'Junior', '100', '1', '2', 'Confirmed');";
+            cmdCreateTable.CommandText = "INSERT INTO Booking VALUES('2', '20221108', '20221110', '2pm', '1', 'Standard', '100', '1', '2', 'Confirmed');";
             cmdCreateTable.ExecuteNonQuery();
-            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('1', '2', 'Junior', 'Idle');";
+            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('1', '2', 'Standard', 'Idle');";
             cmdCreateTable.ExecuteNonQuery();
-            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('2', '3', 'Double', 'Idle');";
+            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('2', '3', 'Deluxe', 'Idle');";
             cmdCreateTable.ExecuteNonQuery();
-            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('3', '4', 'Double', 'Idle');";
+            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('3', '4', 'Deluxe', 'Idle');";
             cmdCreateTable.ExecuteNonQuery();
-            cmdCreateTable.CommandText = "INSERT INTO ROOMPRICE VALUES('Junior', '100');";
+            cmdCreateTable.CommandText = "INSERT INTO ROOMPRICE VALUES('Standard', '100');";
             cmdCreateTable.ExecuteNonQuery();
-            cmdCreateTable.CommandText = "INSERT INTO ROOMPRICE VALUES('Double', '150');";
+            cmdCreateTable.CommandText = "INSERT INTO ROOMPRICE VALUES('Deluxe', '150');";
             cmdCreateTable.ExecuteNonQuery();
 
 

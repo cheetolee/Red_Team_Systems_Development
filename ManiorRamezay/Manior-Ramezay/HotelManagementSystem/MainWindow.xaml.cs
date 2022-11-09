@@ -529,7 +529,7 @@ namespace HotelManagementSystem
                 IRoom rm = CheckInCheckOutDataGrid.SelectedItem as IRoom;
                 if (rm.RStatus != RoomStatus.Occupied)
                 {
-                    MessageBox.Show("Room is empty.");
+                    MessageBox.Show("Error the room appears to be empty.");
                     return;
                 }
                 CheckOutWindow checkoutWin = new CheckOutWindow(CheckInCheckOutDataGrid.SelectedItem as IRoom);

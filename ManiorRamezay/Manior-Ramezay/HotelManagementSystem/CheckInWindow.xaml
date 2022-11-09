@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HotelManagementSystem"
         mc:Ignorable="d"
-        Title="登记入住" SizeToContent="WidthAndHeight" MinHeight="400" MinWidth="450">
+        Title="Check in" SizeToContent="WidthAndHeight" MinHeight="400" MinWidth="450">
     <Grid Background="#FFE5E5E5">
-        <StackPanel Orientation="Vertical" Margin="10,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="53*"/>
+            <ColumnDefinition Width="37*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Margin="10,10,10,10" Grid.ColumnSpan="2">
             <GroupBox x:Name="RoomInfo" Header="Room Info">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
@@ -84,6 +88,6 @@
                 </Grid>
             </GroupBox>
         </StackPanel>
-        <Button x:Name="CheckInConfirmBtn" Content="Check-In" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="29" Width="100" Margin="0,0,10,10" Click="CheckInConfirmBtn_Click"/>
+        <Button x:Name="CheckInConfirmBtn" Content="Check-In" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="29" Width="100" Margin="0,0,10,10" Click="CheckInConfirmBtn_Click" Grid.Column="1"/>
     </Grid>
 </Window>

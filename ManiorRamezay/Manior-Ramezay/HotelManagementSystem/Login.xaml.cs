@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
@@ -20,7 +19,7 @@ using System.Windows.Shapes;
 namespace HotelManagementSystem
 {
     /// <summary>
-    /// Login.xaml 
+    ///login.xaml 
     /// </summary>
     public partial class Login : Window
     {
@@ -30,10 +29,11 @@ namespace HotelManagementSystem
         public Login()
         {
             InitializeComponent();
-            //intialize list
+            //initilized
             fill_List();
         }
 
+        
         private void fill_List()
         {
             string sql = "select [name] from [user] where [is_first] = false";
@@ -46,15 +46,15 @@ namespace HotelManagementSystem
             txtMemberName.SelectedIndex = 0;
         }
 
-        //log in button
+        //login button
         private void login_Click(object sender, RoutedEventArgs e)
         {
             string name = txtMemberName.Text.Trim();
             string password = txtPassWord.Password.Trim();
             string sql = "select * from [user] where [name] = '" + name + "' and [password] = '" + password + "'";
-
+            
             string sql2 = "select is_manager from [user] where [name] = '" + name + "'";
-
+            //update user isFirstLogi,if the first login, user table of isFirstLogin=false
             string sql3 = "update [user] set [is_first] = false where [is_first] = true and [name]='" + name + "'";
 
             if (name != "" && password != "")
@@ -63,7 +63,7 @@ namespace HotelManagementSystem
                 {
                     connection.Open();
 
-                    //update user table
+                    //update user is_first
                     OleDbCommand sqlcmd3 = new OleDbCommand(sql3, connection);
                     sqlcmd3.ExecuteNonQuery();
 
@@ -72,20 +72,20 @@ namespace HotelManagementSystem
                     OleDbDataReader reader = sqlcmd.ExecuteReader();
                     if (reader.Read())
                     {
-
+                        
                         OleDbCommand sqlcmd2 = new OleDbCommand(sql2, connection);
                         OleDbDataReader dr = sqlcmd2.ExecuteReader();
-
-                        MainWindow main = new MainWindow();
+                        
+                        Main main = new Main(name);
                         main.Show();
                         Close();
                     }
                     else
                     {
-                        MessageBox.Show("The password doesn't match the username, please input the right password！");
+                        MessageBox.Show("Username and password don't match, please try again！");
                     }
                     reader.Close();
-
+                    
                 }
                 catch
                 {
@@ -105,7 +105,7 @@ namespace HotelManagementSystem
                 MessageBox.Show("Input password！");
             }
         }
-        //control log in
+        //mouse enter event
         private void Mouse_Enter(object sender, RoutedEventArgs e)
         {
             if (sender == register)
@@ -135,6 +135,11 @@ namespace HotelManagementSystem
             {
                 Register reg = new Register();
                 reg.ShowDialog();
+            }
+            else if (sender == findpwd)
+            {
+                FindPassword fp = new FindPassword();
+                fp.ShowDialog();
             }
         }
     }

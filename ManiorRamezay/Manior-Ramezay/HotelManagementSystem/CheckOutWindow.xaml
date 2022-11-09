@@ -38,32 +38,32 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Grid.Column="1" Margin="5,0">
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                            <Label x:Name="contractsLbl" Content="联系人：" Margin="12,0,5,0"/>
+                            <Label x:Name="contractsLbl" Content="Name：" Margin="12,0,5,0"/>
                             <Label x:Name="contracts" Content="xxx"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="contractsNumLbl" Content="联系电话：" Margin="0,0,5,0"/>
-                            <Label x:Name="contractsNum" Content="188****8888"/>
+                            <Label x:Name="contractsNumLbl" Content="Telephone：" Width="82"/>
+                            <Label x:Name="contractsNum" Content="188****8888" Width="103"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="companyLbl" Content="单位：" Margin="24,0,5,0"/>
-                            <Label x:Name="company" Content="北邮电"/>
+                            <Label x:Name="companyLbl" Content="Comapny：" Margin="24,0,5,0"/>
+                            <Label x:Name="company" Content="xxxx"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="addressLbl" Content="地址：" Margin="24,0,5,0"/>
+                            <Label x:Name="addressLbl" Content="Address：" Margin="24,0,5,0"/>
                             <Label MaxWidth="175">
-                                <TextBlock x:Name="address" TextWrapping="Wrap" Text="北京市海淀区北太平庄街道西土城路10号"/>
+                                <TextBlock x:Name="address" TextWrapping="Wrap" Text="988 rue clark, Montreal qc H2Z 1J9"/>
                             </Label>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
             </GroupBox>
-            <GroupBox Header="该订单其它离店房间" Margin="0,5">
+            <GroupBox Header="Other check out date" Margin="0,5">
                 <StackPanel x:Name="checkOutRoomsList" Orientation="Horizontal" Margin="10">
-                    <CheckBox x:Name="CbxSelectAll" Content="全选" Margin="5,0,15,0"/>
+                    <CheckBox x:Name="CbxSelectAll" Content="Select all" Margin="5,0,15,0"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="消费信息" Margin="0,5">
+            <GroupBox Header="Cost info" Margin="0,5">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -71,35 +71,35 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Vertical" Grid.Column="0" Margin="5,0">
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="roomPriceLbl" Content="房间单价：" Margin="0,0,5,0"/>
+                            <Label x:Name="roomPriceLbl" Content="Price：" Margin="0,0,5,0"/>
                             <Label x:Name="roomPrice" Content="999"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="checkOutTimeLbl" Content="退房时间：" Margin="0,0,5,0"/>
+                            <Label x:Name="checkOutTimeLbl" Content="Check out：" Margin="0,0,5,0"/>
                             <Label x:Name="checkOutTime" Content="2099-0-0 00:00"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="otherPaymentLbl" Content="其它消费：" Margin="0,0,5,0"/>
+                            <Label x:Name="otherPaymentLbl" Content="Other cost：" Margin="0,0,5,0"/>
                             <TextBox x:Name="otherPayment" TextChanged="CalculatePrice" Width="100" Height="23"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Grid.Column="1">
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="totalPaymentLbl" Content="总消费：" Margin="12,0,5,0"/>
+                            <Label x:Name="totalPaymentLbl" Content="Total cost：" Margin="12,0,5,0"/>
                             <Label x:Name="totalPayment" Content="999"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="downPaymentLbl" Content="已收定金：" Margin="0,0,5,0"/>
+                            <Label x:Name="downPaymentLbl" Content="Deposite：" Margin="0,0,5,0"/>
                             <Label x:Name="downPayment" Content="100"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="finalPaymentLbl" Content="实收：" Margin="24,0,5,0"/>
+                            <Label x:Name="finalPaymentLbl" Content="Actual cost：" Margin="24,0,5,0"/>
                             <Label x:Name="finalPayment" Content="899" Foreground="DarkRed"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
             </GroupBox>
-            <Button x:Name="CheckOutConfirmBtn" Content="离店" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="29" Width="100" Margin="0,5,0,0" Click="CheckOutConfirmBtn_Click"/>
+            <Button x:Name="CheckOutConfirmBtn" Content="Check out" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="29" Width="100" Margin="0,5,0,0" Click="CheckOutConfirmBtn_Click"/>
         </StackPanel>
     </Grid>
 </Window>

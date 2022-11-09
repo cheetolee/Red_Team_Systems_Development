@@ -21,7 +21,7 @@ namespace HotelManagementSystem
     /// </summary>
     public partial class Register : Window
     {
-        static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|;Persist Security Info=True";
+        static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory;Persist Security Info=True";
         OleDbConnection connection = new OleDbConnection(connectionString);
 
         public Register()
@@ -36,11 +36,11 @@ namespace HotelManagementSystem
             string password = txtPassWord.Password.Trim();
             string CPassWord = txtCPassWord.Password.Trim();
             //register
-            string sql = "insert into [user]([name],[digitalSecurity],[password]) values('"
+            string sql = "insert into [user]([name],[digitalSecurity],[password]) values('" 
                 + txtname.Text.Trim() + "','" + txtDigitalSecurity.Password.Trim() + "','" + txtPassWord.Password.Trim() + "')";
-            //if has been registeted sql
+            //if user has been registered
             string sql2 = "select * from [user] where [name] = '" + name + "'";
-
+            
             string is_manager_sql = "select * from [user]";
             //sql += txtname.Text.Trim() + "','";
             //sql += txtDigitalSecurity.Password.Trim() + "','";
@@ -50,52 +50,50 @@ namespace HotelManagementSystem
             {
                 //try
                 //{
-                connection.Open();
+                    connection.Open();
 
-                //if username is existed or not
-                OleDbCommand sqlcmd2 = new OleDbCommand(sql2, connection);
-                OleDbDataReader reader = sqlcmd2.ExecuteReader();
-                if (reader.Read())
-                {
-                    MessageBox.Show("Has been registerd, please log in！");
-                }
-                else
-                {
-                    //password length
-                    int digitalSecurityLength = digitalsecurity.Length;
-                    //if password is the same
-                    if (password == CPassWord && digitalSecurityLength >= 1 && digitalSecurityLength <= 6)
+                    //if user has been existed
+                    OleDbCommand sqlcmd2 = new OleDbCommand(sql2, connection);
+                    OleDbDataReader reader = sqlcmd2.ExecuteReader();
+                    if (reader.Read())
                     {
-                        //if the password is the same
-                        int length = password.Length;
-
-                        if (length >= 6 && length <= 16)
-                        {
-                            OleDbCommand sda = new OleDbCommand(is_manager_sql, connection);
-                            OleDbDataReader reader1 = sda.ExecuteReader();
-                            if (!reader1.Read())
-                            {
-                                sql = "insert into [user]([name],[digitalSecurity],[password],[is_manager]) values('"
-                                       + txtname.Text.Trim() + "','" + txtDigitalSecurity.Password.Trim() + "','" + txtPassWord.Password.Trim() + "',true)";
-                            }
-                            OleDbCommand sqlcmd = new OleDbCommand(sql, connection);
-                            sqlcmd.ExecuteNonQuery();
-                            MessageBox.Show("Registered sucessfully！");
-                            Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Password must be at least 6 length and less than 16！");
-                        }
+                        MessageBox.Show("Already registerd. Please log in！");
                     }
                     else
                     {
-                        if (!(digitalSecurityLength >= 1 && digitalSecurityLength <= 6))
-                            MessageBox.Show("Password must be at least 1 length and less than 6 length！");
+                        //password length
+                        int digitalSecurityLength = digitalsecurity.Length;
+                        //if passwords are the same
+                        if (password == CPassWord && digitalSecurityLength >= 1 && digitalSecurityLength <= 6)
+                        {
+                            //passowrd length 6-16 length
+                            int length = password.Length;
+
+                            if (length >= 6 && length <= 16)
+                            {
+                                OleDbCommand sda = new OleDbCommand(is_manager_sql, connection);
+                                OleDbDataReader reader1 = sda.ExecuteReader();
+                                if (!reader1.Read())
+                                {
+                                    sql = "insert into [user]([name],[digitalSecurity],[password],[is_manager]) values('"
+                                           + txtname.Text.Trim() + "','" + txtDigitalSecurity.Password.Trim() + "','" + txtPassWord.Password.Trim() + "',true)";
+                                }
+                                OleDbCommand sqlcmd = new OleDbCommand(sql, connection);
+                                sqlcmd.ExecuteNonQuery();
+                                MessageBox.Show("Registered successfully！");
+                                Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Password must be 6-16 length！");
+                            }
+                        }
                         else
-                            MessageBox.Show("Password are not the same！");
+                        {
+                       
+                                MessageBox.Show("Passwords are not the same！");
+                        }
                     }
-                }
                 //}
                 //catch
                 //{
@@ -108,9 +106,9 @@ namespace HotelManagementSystem
             }
             else
             {
-                MessageBox.Show("Please input username！");
+                MessageBox.Show("Please input the username！");
             }
-
+            
         }
 
         private void txtname_LostFocus(object sender, RoutedEventArgs e)
@@ -130,7 +128,7 @@ namespace HotelManagementSystem
                     checkName.Foreground = new SolidColorBrush(Colors.Red);
                     checkName.FontSize = 20;
                     checkName.Content = "×";
-                    checkName.ToolTip = "The username has been registerd！";
+                    checkName.ToolTip = "Username already registered！";
                 }
                 else
                 {
@@ -147,7 +145,7 @@ namespace HotelManagementSystem
                 checkName.Foreground = new SolidColorBrush(Colors.Red);
                 checkName.FontSize = 20;
                 checkName.Content = "×";
-                checkName.ToolTip = "Username can not be empty！";
+                checkName.ToolTip = "The username can not be empty！";
             }
         }
 
@@ -158,7 +156,7 @@ namespace HotelManagementSystem
             String p2 = txtCPassWord.Password;
             if (p1 != p2)
             {
-                checkPassword.Content = "Passwords are not the same!";
+                checkPassword.Content = "Passwords are not the same.";
             }
             else
             {
@@ -183,20 +181,7 @@ namespace HotelManagementSystem
 
         }
 
-        private void txtDigitalSecurity_LostFocus(object sender, RoutedEventArgs e)
-        {
-            string digitalSecurity = txtDigitalSecurity.Password.Trim();
-            string strRegular = @"^\d{1,6}$";
-            Boolean regularTrue = Regex.IsMatch(digitalSecurity, strRegular);
-            if (!regularTrue)
-            {
-                checkPassordLength.Foreground = new SolidColorBrush(Colors.Red);
-                checkPassordLength.Content = "Input 1-6 length";
-            }
-            else
-            {
-                checkPassordLength.Content = "";
-            }
+
         }
     }
-}
+

@@ -24,7 +24,8 @@ namespace HotelManagementSystem
     /// </summary>
     public partial class Login : Window
     {
-        private SQLiteConnection sqlCon = null;
+        static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|;Persist Security Info=True";
+        OleDbConnection connection = new OleDbConnection(connectionString);
 
         public Login()
         {
@@ -32,7 +33,6 @@ namespace HotelManagementSystem
             //intialize list
             fill_List();
         }
-
 
         private void fill_List()
         {

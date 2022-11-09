@@ -76,7 +76,7 @@ namespace HotelManagementSystem
                         OleDbCommand sqlcmd2 = new OleDbCommand(sql2, connection);
                         OleDbDataReader dr = sqlcmd2.ExecuteReader();
                         
-                        Main main = new Main(name);
+                        MainWindow main = new MainWindow();
                         main.Show();
                         Close();
                     }
@@ -135,11 +135,6 @@ namespace HotelManagementSystem
             {
                 Register reg = new Register();
                 reg.ShowDialog();
-            }
-            else if (sender == findpwd)
-            {
-                FindPassword fp = new FindPassword();
-                fp.ShowDialog();
             }
         }
     }

@@ -36,7 +36,7 @@
                 <Label Grid.Column="4" Grid.Row="0" Name="checkName" VerticalContentAlignment="Top" Content="" VerticalAlignment="Top" Height="26"></Label>
 
                 <Label Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Height="26" Width="58">Email</Label>
-                <PasswordBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Name="txtDigitalSecurity" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="25" Margin="9,0,0,0" FontSize="12" ToolTip="请输入1到6位数字密保！" LostFocus="txtDigitalSecurity_LostFocus" />
+                <PasswordBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Name="txtDigitalSecurity" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="25" Margin="9,0,0,0" FontSize="12" ToolTip="Password insufficiently long." />
                 <Label Grid.Column="4" Grid.Row="1" Name="checkDigitalSecurity" Content=""></Label>
 
                 <Label Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Height="26" Width="58">New password</Label>

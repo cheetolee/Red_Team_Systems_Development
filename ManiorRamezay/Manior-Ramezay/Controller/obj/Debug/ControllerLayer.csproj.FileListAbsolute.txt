@@ -1,0 +1,12 @@
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\bin\Debug\ControllerLayer.dll
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\bin\Debug\ControllerLayer.pdb
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\bin\Debug\Interface.dll
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\bin\Debug\Model.dll
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\bin\Debug\System.Data.SQLite.dll
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\bin\Debug\Interface.pdb
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\bin\Debug\Model.pdb
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\obj\Debug\ControllerLayer.csproj.AssemblyReference.cache
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\obj\Debug\ControllerLayer.csproj.CoreCompileInputs.cache
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\obj\Debug\ControllerLayer.csproj.CopyComplete
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\obj\Debug\ControllerLayer.dll
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\ControllerLayer\obj\Debug\ControllerLayer.pdb

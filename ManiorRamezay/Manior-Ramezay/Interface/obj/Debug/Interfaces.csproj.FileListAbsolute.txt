@@ -1,0 +1,6 @@
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\Interface\bin\Debug\Interface.dll
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\Interface\bin\Debug\Interface.pdb
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\Interface\obj\Debug\Interfaces.csproj.AssemblyReference.cache
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\Interface\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\Interface\obj\Debug\Interface.dll
+C:\Users\Patrick Larocque\OneDrive\Desktop\HotelManagement-master\HotelManagement-master\Interface\obj\Debug\Interface.pdb

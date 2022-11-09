@@ -5,28 +5,28 @@ using Interface;
 
 namespace ControllerLayer
 {
-    public class FacadeController
+    public class UIController
     {
         private SQLiteController dbCon;
         private HotelController hotelCon;
         private BookingController customerCon;
-        private LogController logCon;
+        private ReportController logCon;
 
-        private static FacadeController instance;
+        private static UIController instance;
         
-        private FacadeController()
+        private UIController()
         {
             dbCon = new SQLiteController();
             hotelCon = new HotelController(dbCon);
-            logCon = new LogController(dbCon);
+            logCon = new ReportController(dbCon);
             customerCon = new BookingController(dbCon, hotelCon, logCon);
         }
         
-        public static FacadeController GetInstance()
+        public static UIController GetInstance()
         {
             if (instance == null)
             {
-                instance = new FacadeController();
+                instance = new UIController();
             }
             return instance;
         }

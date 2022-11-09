@@ -18,14 +18,14 @@ namespace HotelManagementSystem
     /// </summary>
     public partial class CheckInWindow : Window
     {
-        FacadeController facade;
+        UIController facade;
         IReservation reservation;
         IBooking booking;
         ICustomer contract;
         public CheckInWindow(string bookingid)
         {
             InitializeComponent();
-            facade = FacadeController.GetInstance();
+            facade = UIController.GetInstance();
             LoadData(bookingid);
         }
 

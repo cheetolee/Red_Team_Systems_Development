@@ -12,7 +12,7 @@ namespace HotelManagementSystem
     /// </summary>
     public partial class CheckOutWindow : Window
     {
-        FacadeController facade = FacadeController.GetInstance();
+        UIController facade = UIController.GetInstance();
         IReservation reservation;
         IBooking booking;
         ICustomer contract;

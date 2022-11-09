@@ -99,7 +99,7 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical">
                                         <CheckBox x:Name="ContractsDetailsRegisterChx" Content="New Guest" Height="23" Margin="10,88,0,0" Width="185" Checked="CheckBoxRegister_Checked" Unchecked="CheckBoxRegister_Unchecked"/>
-                                        <Button x:Name="ContractsDetailsSearchBtn" Content="搜索" Height="27" Margin="10,8,0,0" Width="185" Click="SearchBtn_Click" Background="{x:Null}"/>
+                                        <Button x:Name="ContractsDetailsSearchBtn" Content="Search" Height="27" Margin="10,8,0,0" Width="185" Click="SearchBtn_Click" Background="{x:Null}"/>
                                     </StackPanel>
                                 </StackPanel>
                                 <Button x:Name="BackReservation" Content="Back" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="29" Width="100" Margin="10,0,0,10" Click="BackToAvailibiltyBtn_Click"/>

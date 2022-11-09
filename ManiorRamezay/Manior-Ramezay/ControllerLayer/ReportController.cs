@@ -4,11 +4,11 @@ using Interface;
 namespace ControllerLayer
 {
 
-    internal class LogController
+    internal class ReportController
     {
         private SQLiteController dbCon;
 
-        internal LogController(SQLiteController db)
+        internal ReportController(SQLiteController db)
         {
             dbCon = db;
         }

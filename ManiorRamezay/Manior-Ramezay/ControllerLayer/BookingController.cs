@@ -10,9 +10,9 @@ namespace ControllerLayer
     {
         private SQLiteController dbCon;
         private HotelController hCon;
-        private LogController LCon;
+        private ReportController LCon;
 
-        internal BookingController(SQLiteController db,HotelController h, LogController l)
+        internal BookingController(SQLiteController db,HotelController h, ReportController l)
         {
             dbCon = db;
             hCon = h;

@@ -14,7 +14,7 @@ namespace HotelManagementSystem
 
     public partial class MainWindow : Window
     {
-        FacadeController facade;
+        UIController mainWindow;
         IRoom selectedRoom;
         List<IAvaliableRoom> selectedRoomList = new List<IAvaliableRoom>();
         ICustomer customer;
@@ -28,7 +28,7 @@ namespace HotelManagementSystem
                 InitializeComponent();
                 CenterWindowOnScreen();
                 MainTab.SelectedIndex = 0;
-                facade = FacadeController.GetInstance();
+                mainWindow = UIController.GetInstance();
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace HotelManagementSystem
         /// </summary>
         private void InitializeMainHall()
         {
-            List<IRoom> rooms = facade.GetRooms();
+            List<IRoom> rooms = mainWindow.GetRooms();
             FloorList = new Dictionary<int, int>();
             RoomsInAllFloorList = new List<List<IRoom>>();
             foreach (IRoom rm in rooms)
@@ -184,7 +184,7 @@ namespace HotelManagementSystem
             else
                 roomType = (RoomType)Enum.Parse(typeof(RoomType), RoomTypeCombo.SelectedValue.ToString());
 
-            RoomsDataGrid.ItemsSource = facade.GetAvailableRooms(roomType, StartDatePicker.SelectedDate, EndDatePicker.SelectedDate);
+            RoomsDataGrid.ItemsSource = mainWindow.GetAvailableRooms(roomType, StartDatePicker.SelectedDate, EndDatePicker.SelectedDate);
             //DataGridComboBoxColumn.it
         }
 
@@ -224,8 +224,12 @@ namespace HotelManagementSystem
             if (RoomsDataGrid.SelectedIndex != -1)
             {
                 var room = RoomsDataGrid.SelectedItem as IAvaliableRoom;
-                if (room.ChosenNum > 0 && room.ChosenNum <= room.Remain)
+                if (room.ChosenNum >= 0 && room.ChosenNum < room.Remain)
                 {
+                    if (room.ChosenNum == 0)
+                    {
+                        room.ChosenNum = 1;
+                    }
                     selectedRoomList.Add(room);
                     Label Lbl = new Label();
                     Lbl.Content = room.ChosenNum + " × " + room.RType.ToString();
@@ -236,7 +240,7 @@ namespace HotelManagementSystem
                 }
                 else
                     MessageBox.Show("Invalid selected for the given room type","Unable to add room.");
-            }
+            } 
         }
 
         private void AvailabilityClear(object sender, RoutedEventArgs e)
@@ -279,7 +283,7 @@ namespace HotelManagementSystem
             {
                 BookingTab.SelectedIndex = 2;
                 refreshTabsStatus();
-                customer = facade.CreateCustomer(
+                customer = mainWindow.CreateCustomer(
                     ContractsDetailsNameTbx.Text,
                     null, null,
                     ContractsDetailsPhoneNoTbx.Text,
@@ -287,7 +291,7 @@ namespace HotelManagementSystem
                     ContractsDetailsCreditCardNoTbx.Text,
                     null, null, null
                     );
-                reservation = facade.CreateReservation();
+                reservation = mainWindow.CreateReservation();
                 RecieptDetailsNameTbx.Text = customer.Name;
                 RecieptDetailsCreditCardNoTbx.Text = customer.IDcard;
                 RecieptPhoneNoTbx.Text = customer.Phone;
@@ -308,7 +312,7 @@ namespace HotelManagementSystem
             else
                 try
                 {
-                    var customer = facade.GetCustomerViaPhone(ContractsDetailsPhoneNoTbx.Text);
+                    var customer = mainWindow.GetCustomerViaPhone(ContractsDetailsPhoneNoTbx.Text);
                     ContractsDetailsNameTbx.Text = customer.Name;
                     ContractsDetailsCreditCardNoTbx.Text = customer.IDcard;
                     ContractsDetailsConpanyTbx.Text = customer.Company;
@@ -368,17 +372,22 @@ namespace HotelManagementSystem
         {
             if (ArrivalTimeHourCombo.Value == null)
             {
-                MessageBox.Show("请填写最晚到店时间");
+                MessageBox.Show("Please fill in the latest arrival time.");
                 return;
             }
-            facade.CreateBookings(selectedRoomList,
+            if (RecieptDownPaymentTbx.Text == string.Empty)
+            {
+                MessageBox.Show("Please enter a down payment amount or 0 if there will be no prepaid amount.");
+                return;
+            }
+            mainWindow.CreateBookings(selectedRoomList,
                 (DateTime)StartDatePicker.SelectedDate,
                 (DateTime)EndDatePicker.SelectedDate,
                 string.Format("{0:HHmm}", ArrivalTimeHourCombo.Value),
                 customer.ID, reservation.ID
                 );
-            facade.ComfirmReservation(reservation, double.Parse(RecieptDownPaymentTbx.Text));
-            MessageBox.Show("预订成功！");
+            mainWindow.ComfirmReservation(reservation, double.Parse(RecieptDownPaymentTbx.Text));
+            MessageBox.Show("Reservation confirmed!");
             ClearReservationTab(sender, e);
         }
 
@@ -420,7 +429,7 @@ namespace HotelManagementSystem
                 try
                 {
                     searchbyRooms = false;
-                    CheckInCheckOutDataGrid.ItemsSource = facade.GetActiveBookingsViaName(CheckInCheckOutSearchTbx.Text);
+                    CheckInCheckOutDataGrid.ItemsSource = mainWindow.GetActiveBookingsViaName(CheckInCheckOutSearchTbx.Text);
                     if (CheckInCheckOutDataGrid.Items.Count == 0)
                     {
                         MessageBox.Show("Unable to find contact or reservation.");
@@ -444,7 +453,7 @@ namespace HotelManagementSystem
                 try
                 {
                     searchbyRooms = false;
-                    CheckInCheckOutDataGrid.ItemsSource = facade.GetActiveBookings(CheckInCheckOutSearchTbx.Text);
+                    CheckInCheckOutDataGrid.ItemsSource = mainWindow.GetActiveBookings(CheckInCheckOutSearchTbx.Text);
                     if (CheckInCheckOutDataGrid.Items.Count == 0)
                     {
                         MessageBox.Show("Reservation not found.");
@@ -468,7 +477,7 @@ namespace HotelManagementSystem
                 try
                 {
                     searchbyRooms = true;
-                    CheckInCheckOutDataGrid.ItemsSource = facade.GetRoomViaNum(CheckInCheckOutSearchTbx.Text);
+                    CheckInCheckOutDataGrid.ItemsSource = mainWindow.GetRoomViaNum(CheckInCheckOutSearchTbx.Text);
                     if (CheckInCheckOutDataGrid.Items.Count == 0)
                     {
                         MessageBox.Show("Unable to find room number.");
@@ -484,7 +493,7 @@ namespace HotelManagementSystem
         private void AllBtn_Click(object sender, RoutedEventArgs e)
         {
             searchbyRooms = false;
-            CheckInCheckOutDataGrid.ItemsSource = facade.GetActiveBookings(null);
+            CheckInCheckOutDataGrid.ItemsSource = mainWindow.GetActiveBookings(null);
             if (CheckInCheckOutDataGrid.Items.Count == 0)
             {
                 MessageBox.Show("Reservation not fodund.");
@@ -550,7 +559,7 @@ namespace HotelManagementSystem
             {
                 IRoom rm = CheckInCheckOutDataGrid.SelectedItem as IRoom;
                 IBooking bk = null;
-                var book = facade.GetActiveBookings(null);
+                var book = mainWindow.GetActiveBookings(null);
                 foreach (IBooking bktemp in book)
                 {
                     if (bktemp.RoomID == rm.ID)
@@ -563,9 +572,9 @@ namespace HotelManagementSystem
                 {
                     if(bk != null)
                     {
-                        facade.CancelBooking(bk.ID);
+                        mainWindow.CancelBooking(bk.ID);
                         MessageBox.Show("Reservatrion cancelled.");
-                        facade.Log_Cancel(bk);
+                        mainWindow.Log_Cancel(bk);
                     }
                 }
                 catch (Exception ex)
@@ -578,7 +587,7 @@ namespace HotelManagementSystem
                 IBooking bk = CheckInCheckOutDataGrid.SelectedItem as IBooking;
                 try
                 {
-                    facade.CancelBooking(bk.ID);
+                    mainWindow.CancelBooking(bk.ID);
                     MessageBox.Show("Reservation Cancelled.");
                 }
                 catch (Exception ex)
@@ -598,12 +607,12 @@ namespace HotelManagementSystem
 
         private void UpdateManageRoomDataGrid()
         {
-            ManageRoomDataGrid.ItemsSource = facade.GetRooms();
+            ManageRoomDataGrid.ItemsSource = mainWindow.GetRooms();
         }
 
         private void UpdateManageRoomGroup(string RoomID)
         {
-            IRoom room = facade.GetRoom(RoomID);
+            IRoom room = mainWindow.GetRoom(RoomID);
             ManageRoomID.Content = room.ID;
             ManageRoomNum.Text = room.RoomNum;
             ManageRoomTypeCombo.SelectedIndex = (int)room.RType;
@@ -648,10 +657,10 @@ namespace HotelManagementSystem
             {
                 if (ManageRoomNum.Text == "" || ManageRoomTypeCombo.SelectedIndex == -1)
                     return;
-                IRoom room = facade.GetRoom(ManageRoomID.Content.ToString());
+                IRoom room = mainWindow.GetRoom(ManageRoomID.Content.ToString());
                 if (room == null) return;
                 room.RStatus = RoomStatus.NA;
-                facade.UpdateRoom(room);
+                mainWindow.UpdateRoom(room);
             }
             catch (Exception ex)
             {
@@ -674,14 +683,14 @@ namespace HotelManagementSystem
                 }
                 if (ManageRoomAddRadio.IsChecked == true)
                 {
-                    facade.CreateRoom(ManageRoomNum.Text, (RoomType)ManageRoomTypeCombo.SelectedItem);
+                    mainWindow.CreateRoom(ManageRoomNum.Text, (RoomType)ManageRoomTypeCombo.SelectedItem);
                 }
                 else if (ManageRoomChangeRadio.IsChecked == true && ManageRoomDataGrid.SelectedIndex != -1)
                 {
-                    IRoom room = facade.GetRoom(ManageRoomID.Content.ToString());
+                    IRoom room = mainWindow.GetRoom(ManageRoomID.Content.ToString());
                     room.RoomNum = ManageRoomNum.Text;
                     room.RType = (RoomType)ManageRoomTypeCombo.SelectedIndex;
-                    facade.UpdateRoom(room);
+                    mainWindow.UpdateRoom(room);
                 }
                 else MessageBox.Show("Please select a room and verify that all required info is entered.");
             }
@@ -704,24 +713,24 @@ namespace HotelManagementSystem
         {
             if (ManageRoomPriceCombo.SelectedIndex == -1 || ManageRoomPriceTbx.Text == "")
                 return;
-            facade.UpdateRoomPrice((RoomType)ManageRoomPriceCombo.SelectedIndex, double.Parse(ManageRoomPriceTbx.Text.ToString()));
+            mainWindow.UpdateRoomPrice((RoomType)ManageRoomPriceCombo.SelectedIndex, double.Parse(ManageRoomPriceTbx.Text.ToString()));
         }
 
         private void ManageRoomPriceCombo_Changed(object sender, SelectionChangedEventArgs e)
         {
-            IRoomPrice roomprice = facade.GetRoomPrice((RoomType)ManageRoomPriceCombo.SelectedItem);
+            IRoomPrice roomprice = mainWindow.GetRoomPrice((RoomType)ManageRoomPriceCombo.SelectedItem);
             if (roomprice != null)
                 ManageRoomPriceTbx.Text = roomprice.Price.ToString();
         }
 
         private void LogLoaded(object sender, RoutedEventArgs e)
         {
-            LogDataGrid.ItemsSource = facade.GetLogs();
+            LogDataGrid.ItemsSource = mainWindow.GetLogs();
         }
 
         private void LogSearch_Click(object sender, RoutedEventArgs e)
         {
-            LogDataGrid.ItemsSource = facade.GetLogs(LogStartDay.SelectedDate, LogEndDay.SelectedDate);
+            LogDataGrid.ItemsSource = mainWindow.GetLogs(LogStartDay.SelectedDate, LogEndDay.SelectedDate);
         }
         #endregion
 

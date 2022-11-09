@@ -56,3 +56,7 @@ C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\obj\Debug\HotelManagementSystem.csproj.CopyComplete
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\obj\Debug\HotelManagementSystem.exe
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\obj\Debug\HotelManagementSystem.pdb
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\obj\Debug\Login.g.cs
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\obj\Debug\Register.g.cs
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\obj\Debug\Login.baml
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\obj\Debug\Register.baml

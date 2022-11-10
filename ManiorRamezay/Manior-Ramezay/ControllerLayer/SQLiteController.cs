@@ -82,9 +82,9 @@ namespace ControllerLayer
             
             cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('1', 'Patrick', 'Male', '31', '8192398520', 'null', '1', 'Vanier', '123 Fake Street');";
             cmdCreateTable.ExecuteNonQuery();
-            cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('2', 'Julian', 'Male', '70', '5141234567', 'null', '2', 'Vanier', '543 Fake Street');";
+            cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('2', 'Julian', 'Male', '70', '5141234567', '555', '2', 'Vanier', '543 Fake Street');";
             cmdCreateTable.ExecuteNonQuery();
-            cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('3', 'Li', 'Female', '33', '5149876543', 'null', '4', 'Vanier', '321 Fake Street');";
+            cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('3', 'Li', 'Female', '33', '123', 'null', '4', 'Vanier', '321 Fake Street');";
             cmdCreateTable.ExecuteNonQuery();
             cmdCreateTable.CommandText = "INSERT INTO Booking VALUES('1', '20221101', '20221107', '7 days', '1', 'Standard', '100', '1', '1', 'Confirmed');";
             cmdCreateTable.ExecuteNonQuery();
@@ -110,6 +110,12 @@ namespace ControllerLayer
             cmdCreateTable.CommandText = "INSERT INTO ROOMPRICE VALUES('Standard', '100');";
             cmdCreateTable.ExecuteNonQuery();
             cmdCreateTable.CommandText = "INSERT INTO ROOMPRICE VALUES('Deluxe', '150');";
+            cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "INSERT INTO ROOMPRICE VALUES('KingSuite', '250');";
+            cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "INSERT INTO ROOMPRICE VALUES('RoyalSuite', '300');";
+            cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "INSERT INTO ROOMPRICE VALUES('FireplaceSuite', '200');";
             cmdCreateTable.ExecuteNonQuery();
 
 

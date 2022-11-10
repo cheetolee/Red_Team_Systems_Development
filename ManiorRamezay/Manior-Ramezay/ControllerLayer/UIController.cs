@@ -139,11 +139,11 @@ namespace ControllerLayer
 
         #region Customer Methods
         
-        public ICustomer CreateCustomer(string name, CustomerGender? gender, int? age, string phone, string fax, string idcard, string roomid, string company, string address)
+        public ICustomer CreateCustomer(string name, CustomerGender? gender, int? age, string phone, string idcard, string roomid, string company, string address)
         {
             if (gender == null) gender = CustomerGender.Male;
             if (age == null) age = 0;
-            var customer = customerCon.CreateCustomer(name, (CustomerGender)gender, (int)age, phone,fax, idcard, roomid, company,address);
+            var customer = customerCon.CreateCustomer(name, (CustomerGender)gender, (int)age, phone, idcard, roomid, company,address);
             SetClock();
             return customer;
         }

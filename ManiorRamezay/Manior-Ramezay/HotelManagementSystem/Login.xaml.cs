@@ -18,9 +18,7 @@ using System.Windows.Shapes;
 
 namespace HotelManagementSystem
 {
-    /// <summary>
-    ///login.xaml 
-    /// </summary>
+
     public partial class Login : Window
     {
         static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|;Persist Security Info=True";
@@ -76,7 +74,7 @@ namespace HotelManagementSystem
                         OleDbCommand sqlcmd2 = new OleDbCommand(sql2, connection);
                         OleDbDataReader dr = sqlcmd2.ExecuteReader();
                         
-                        Main main = new Main(name);
+                        MainWindow main = new MainWindow();
                         main.Show();
                         Close();
                     }
@@ -135,11 +133,6 @@ namespace HotelManagementSystem
             {
                 Register reg = new Register();
                 reg.ShowDialog();
-            }
-            else if (sender == findpwd)
-            {
-                FindPassword fp = new FindPassword();
-                fp.ShowDialog();
             }
         }
     }

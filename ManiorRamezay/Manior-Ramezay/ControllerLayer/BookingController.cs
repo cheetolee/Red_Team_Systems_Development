@@ -21,10 +21,10 @@ namespace ControllerLayer
         
         #region Customer 
 
-        internal ICustomer CreateCustomer(string name, CustomerGender gender, int age, string phone, string fax, string idcard,string roomid, string company, string address)
+        internal ICustomer CreateCustomer(string name, CustomerGender gender, int age, string phone, string idcard,string roomid, string company, string address)
         {
             var customer = new Customer();
-            return dbCon.CreateCustomer(customer.ID, name, gender, age,phone, fax, idcard, roomid, company, address);
+            return dbCon.CreateCustomer(customer.ID, name, gender, age,phone, idcard, roomid, company, address);
         }
 
         internal ICustomer GetCustomer(string customerID)

@@ -289,7 +289,7 @@ namespace HotelManagementSystem
                     ContractsDetailsPhoneNoTbx.Text,
                     null,
                     ContractsDetailsCreditCardNoTbx.Text,
-                    null, null, null
+                    null, null
                     );
                 reservation = mainWindow.CreateReservation();
                 RecieptDetailsNameTbx.Text = customer.Name;
@@ -736,7 +736,7 @@ namespace HotelManagementSystem
 
         private void LogBackup_Click(object sender, RoutedEventArgs e)
         {
-            string sourcePath = Environment.CurrentDirectory + "\\ManoirRamezay.db";
+            string sourcePath = Environment.CurrentDirectory + "ManoirRamezay.db";
             string bkFileName = "\\" + string.Format("{0:yyyyMMddHHmm}_", IClock.Time) + "ManoirRamezay.db.bak";
             string destPath = Environment.CurrentDirectory + bkFileName;
             System.IO.File.Copy(sourcePath, destPath, true);

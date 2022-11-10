@@ -97,7 +97,7 @@ namespace HotelManagementSystem
         {
             if (lstTypes.SelectedItem != null)
                 SaveCustomerDetails();
-            var cus = facade.CreateCustomer("新旅客", null, 0, null, null, null, null, null, null);
+            var cus = facade.CreateCustomer("New Guest", null, 0, null, null, null, null, null);
             customerlist.Add(cus);
             lstTypes.SelectedItem = cus;
         }

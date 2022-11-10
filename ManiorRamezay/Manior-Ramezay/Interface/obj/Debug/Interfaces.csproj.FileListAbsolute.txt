@@ -10,3 +10,9 @@ C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\Interface\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\Interface\obj\Debug\Interface.dll
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\Interface\obj\Debug\Interface.pdb
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\Interface\bin\Debug\Interface.dll
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\Interface\bin\Debug\Interface.pdb
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\Interface\obj\Debug\Interfaces.csproj.AssemblyReference.cache
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\Interface\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\Interface\obj\Debug\Interface.dll
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\Interface\obj\Debug\Interface.pdb

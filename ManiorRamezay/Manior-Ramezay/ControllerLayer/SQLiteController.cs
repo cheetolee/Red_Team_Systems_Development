@@ -54,12 +54,14 @@ namespace ControllerLayer
             cmdCreateTable.ExecuteNonQuery();
             cmdCreateTable.CommandText = "DROP TABLE CUSTOMER;";
             cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "DROP TABLE RESERVATION;";
+            cmdCreateTable.ExecuteNonQuery();
 
 
             cmdCreateTable.CommandText = "CREATE TABLE IF NOT EXISTS Room(ROOMID varchar, ROOMNUM varchar,RTYPE varchar,RSTATUS varchar );";
             cmdCreateTable.ExecuteNonQuery();
 
-            cmdCreateTable.CommandText = "CREATE TABLE IF NOT EXISTS Customer(CUSTOMERID varchar, NAME varchar, GENDER varchar,AGE varchar,PHONE varchar,FAX varchar,IDCARD varchar,ROOMID varchar,COMPANY varchar,ADDRESS varchar);";
+            cmdCreateTable.CommandText = "CREATE TABLE IF NOT EXISTS Customer(CUSTOMERID varchar, NAME varchar, GENDER varchar, AGE varchar, PHONE varchar, IDCARD varchar, ROOMID varchar, COMPANY varchar, ADDRESS varchar);";
             cmdCreateTable.ExecuteNonQuery();
 
             cmdCreateTable.CommandText = "CREATE TABLE IF NOT EXISTS Booking(BOOKINGID varchar, STARTDATE varchar, ENDDATE varchar,RESERVETIME varchar,CONTRACTID varchar,ROOMTYPE varchar,THISPRICE double,ROOMID varchar,RESERVATIONID varchar,BSTATUS varchar);";  
@@ -78,7 +80,11 @@ namespace ControllerLayer
             cmdCreateTable.ExecuteNonQuery();
 
             
-            cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('1', 'Patrick', 'Male', '31', '8192398520', '8192398520', '1', '1', 'Vanier', '123 Fake Street');";
+            cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('1', 'Patrick', 'Male', '31', '8192398520', 'null', '1', 'Vanier', '123 Fake Street');";
+            cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('2', 'Julian', 'Male', '70', '5141234567', 'null', '2', 'Vanier', '543 Fake Street');";
+            cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "INSERT INTO Customer VALUES('3', 'Li', 'Female', '33', '5149876543', 'null', '4', 'Vanier', '321 Fake Street');";
             cmdCreateTable.ExecuteNonQuery();
             cmdCreateTable.CommandText = "INSERT INTO Booking VALUES('1', '20221101', '20221107', '7 days', '1', 'Standard', '100', '1', '1', 'Confirmed');";
             cmdCreateTable.ExecuteNonQuery();
@@ -86,9 +92,20 @@ namespace ControllerLayer
             cmdCreateTable.ExecuteNonQuery();
             cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('1', '2', 'Standard', 'Idle');";
             cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('6', '1', 'Standard', 'Idle');";
+            cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('8', '1', 'Standard', 'Idle');";
+            cmdCreateTable.ExecuteNonQuery();
             cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('2', '3', 'Deluxe', 'Idle');";
             cmdCreateTable.ExecuteNonQuery();
-            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('3', '4', 'Deluxe', 'Idle');";
+            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('3', '3', 'Deluxe', 'Idle');";
+            cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('4', '2', 'KingSuite', 'Idle');";
+            cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('5', '3', 'RoyalSuite', 'Idle');";
+            cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.ExecuteNonQuery();
+            cmdCreateTable.CommandText = "INSERT INTO ROOM VALUES('7', '1', 'FireplaceSuite', 'Idle');";
             cmdCreateTable.ExecuteNonQuery();
             cmdCreateTable.CommandText = "INSERT INTO ROOMPRICE VALUES('Standard', '100');";
             cmdCreateTable.ExecuteNonQuery();
@@ -114,10 +131,10 @@ namespace ControllerLayer
                 if (rdr.Read())
                     customer = new Customer(id,
                         rdr["NAME"].ToString(),
-                        (CustomerGender)Enum.Parse(typeof(CustomerGender), rdr["GENDER"].ToString()),
+                        (CustomerGender)Enum.Parse(typeof(CustomerGender), 
+                        rdr["GENDER"].ToString()),
                         int.Parse(rdr["AGE"].ToString()),
                         rdr["PHONE"].ToString(),
-                        rdr["FAX"].ToString(),
                         rdr["IDCARD"].ToString(),
                         rdr["ROOMID"].ToString(),
                         rdr["COMPANY"].ToString(),
@@ -157,7 +174,6 @@ namespace ControllerLayer
                           rdr["GENDER"].ToString()),
                           int.Parse(rdr["AGE"].ToString()),
                           rdr["PHONE"].ToString(),
-                          rdr["FAX"].ToString(),
                           rdr["IDCARD"].ToString(),
                           rdr["ROOMID"].ToString(),
                           rdr["COMPANY"].ToString(),
@@ -181,14 +197,13 @@ namespace ControllerLayer
         {
             connect();
             SQLiteCommand cmd = new SQLiteCommand("UPDATE Customer SET NAME=:NAME,GENDER=:GENDER,AGE=:AGE,PHONE=:PHONE," +
-                "FAX=:FAX,IDCARD=:IDCARD,ROOMID=:ROOMID,COMPANY=:COMPANY,ADDRESS=:ADDRESS WHERE CUSTOMERID=:CUSTOMERID", sqlCon);
+                "IDCARD=:IDCARD,ROOMID=:ROOMID,COMPANY=:COMPANY,ADDRESS=:ADDRESS WHERE CUSTOMERID=:CUSTOMERID", sqlCon);
 
             cmd.Parameters.AddWithValue("CUSTOMERID", customer.ID);
             cmd.Parameters.AddWithValue("NAME", customer.Name);
             cmd.Parameters.AddWithValue("GENDER", customer.Gender.ToString());
             cmd.Parameters.AddWithValue("AGE", customer.Age);
             cmd.Parameters.AddWithValue("PHONE", customer.Phone);
-            cmd.Parameters.AddWithValue("FAX", customer.Fax);
             cmd.Parameters.AddWithValue("IDCARD", customer.IDcard);
             cmd.Parameters.AddWithValue("ROOMID", customer.RoomID);
             cmd.Parameters.AddWithValue("COMPANY", customer.Company);
@@ -209,17 +224,16 @@ namespace ControllerLayer
             return GetCustomer(customer.ID);
         }
 
-        internal ICustomer CreateCustomer(string id,string name, CustomerGender gender,int age, string phone,string fax,string idcard,string roomid, string company,string address)
+        internal ICustomer CreateCustomer(string id,string name, CustomerGender gender,int age, string phone, string idcard,string roomid, string company,string address)
         {
             connect();
-            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO Customer VALUES (@CUSTOMERID, @NAME, @GENDER, @AGE, @PHONE, @FAX, @IDCARD, @ROOMID, @COMPANY, @ADDRESS)", sqlCon);
+            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO Customer VALUES (@CUSTOMERID, @NAME, @GENDER, @AGE, @PHONE, @IDCARD, @ROOMID, @COMPANY, @ADDRESS)", sqlCon);
 
             cmd.Parameters.AddWithValue("@CUSTOMERID", id);
             cmd.Parameters.AddWithValue("@NAME", name);
             cmd.Parameters.AddWithValue("@GENDER", gender.ToString());
             cmd.Parameters.AddWithValue("@AGE", age);
             cmd.Parameters.AddWithValue("@PHONE", phone);
-            cmd.Parameters.AddWithValue("@FAX", fax);
             cmd.Parameters.AddWithValue("@IDCARD", idcard);
             cmd.Parameters.AddWithValue("@ROOMID", roomid);
             cmd.Parameters.AddWithValue("@COMPANY", company);

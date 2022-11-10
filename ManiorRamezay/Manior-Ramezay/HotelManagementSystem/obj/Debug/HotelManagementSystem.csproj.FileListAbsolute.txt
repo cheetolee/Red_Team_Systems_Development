@@ -77,12 +77,10 @@ C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\HotelManagementSystem.exe.config
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\HotelManagementSystem.exe
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\HotelManagementSystem.pdb
-C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\ControllerLayer.dll
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\Interface.dll
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\Model.dll
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\Xceed.Wpf.Toolkit.dll
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\System.Data.SQLite.dll
-C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\ControllerLayer.pdb
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\Interface.pdb
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\Model.pdb
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\obj\Debug\CheckInWindow.baml
@@ -93,3 +91,5 @@ C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\obj\Debug\HotelManagementSystem.csproj.GenerateResource.cache
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\obj\Debug\HotelManagementSystem.csproj.CoreCompileInputs.cache
 C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\obj\Debug\HotelManagementSystem.csproj.CopyComplete
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\Controller.dll
+C:\Users\Patrick Larocque\OneDrive\Documents\GitHub\Red_Team_Systems_Development\Red_Team_Systems_Development\ManiorRamezay\Manior-Ramezay\HotelManagementSystem\bin\Debug\Controller.pdb

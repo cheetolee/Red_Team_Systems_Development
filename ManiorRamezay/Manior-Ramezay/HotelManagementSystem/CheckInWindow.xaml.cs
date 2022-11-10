@@ -13,9 +13,7 @@ namespace HotelManagementSystem
         public string RoomID { get; set; }
         public string RoomNum { get; set; }
     }
-    /// <summary>
-    /// Made by chaogeb
-    /// </summary>
+
     public partial class CheckInWindow : Window
     {
         UIController facade;

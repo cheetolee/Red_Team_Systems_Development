@@ -7,8 +7,8 @@
     <ProjectGuid>{C7FE3CB0-F36C-4B94-A066-6D983250A952}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ControllerLayer</RootNamespace>
-    <AssemblyName>ControllerLayer</AssemblyName>
+    <RootNamespace>Controller</RootNamespace>
+    <AssemblyName>Controller</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>

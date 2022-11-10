@@ -148,9 +148,9 @@ namespace HotelManagementSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("参数错误！" + ex);
+                MessageBox.Show("Error" + ex);
             }
-            MessageBox.Show("离店成功！");
+            MessageBox.Show("Check out sucessful");
             mainWindow.Log_CheckOut(booking);
             this.Close();
         }

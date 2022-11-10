@@ -123,7 +123,7 @@ namespace HotelManagementSystem {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/HotelManagementSystem;component/register.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ManiorRamezay;component/register.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\Register.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

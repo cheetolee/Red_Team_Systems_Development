@@ -7,8 +7,8 @@
     <ProjectGuid>{91123B31-22D0-415B-A6DD-165C063350A1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HotelManagementSystem</RootNamespace>
-    <AssemblyName>HotelManagementSystem</AssemblyName>
+    <RootNamespace>ManiorRamezay</RootNamespace>
+    <AssemblyName>ManiorRamezay</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -60,6 +60,10 @@
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.97.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ControllerLayer\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.Printing" />
     <Reference Include="System.Windows.Forms" />
@@ -149,9 +153,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ControllerLayer\ControllerLayer.csproj">
+    <ProjectReference Include="..\ControllerLayer\Controller.csproj">
       <Project>{c7fe3cb0-f36c-4b94-a066-6d983250a952}</Project>
-      <Name>ControllerLayer</Name>
+      <Name>Controller</Name>
     </ProjectReference>
     <ProjectReference Include="..\Interface\Interfaces.csproj">
       <Project>{d511a8f5-2315-4ea0-bf84-f49f4c0ecb91}</Project>

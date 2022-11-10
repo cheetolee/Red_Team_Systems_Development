@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,78 +23,40 @@ namespace HotelManagementSystem
 
     public partial class Login : Window
     {
-        static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|;Persist Security Info=True";
-        OleDbConnection connection = new OleDbConnection(connectionString);
+
+        private SQLiteConnection sqlCon = null;
 
         public Login()
         {
             InitializeComponent();
-            //initilized
-            fill_List();
+            string dbPath = "Data Source = " + Environment.CurrentDirectory + "/ManoirRamezayDB.db";
+            sqlCon = new SQLiteConnection(dbPath);
+            sqlCon.Open();
+            string sql = "CREATE TABLE IF NOT EXISTS User(Username varchar, Password varchar, is_Admin varchar);";
+            SQLiteCommand cmdCreateUserTable = new SQLiteCommand(sql, sqlCon);
+            cmdCreateUserTable.ExecuteNonQuery();
+            cmdCreateUserTable.CommandText = "INSERT INTO User VALUES('pat', '123', 'true');";
+            cmdCreateUserTable.ExecuteNonQuery();
+            cmdCreateUserTable.CommandText = "INSERT INTO User VALUES('julian', '123', 'true');";
+            cmdCreateUserTable.ExecuteNonQuery();
+            sqlCon.Close();
         }
 
-        
-        private void fill_List()
-        {
-            string sql = "select [name] from [user] where [is_first] = false";
-            OleDbDataAdapter da = new OleDbDataAdapter(sql, connection);
-            DataSet ds = new DataSet();
-            da.Fill(ds, "Name");
-
-            txtMemberName.DisplayMemberPath = ds.Tables["Name"].Columns["name"].ToString();
-            txtMemberName.ItemsSource = ds.Tables["Name"].DefaultView;
-            txtMemberName.SelectedIndex = 0;
-        }
+       
 
         //login button
         private void login_Click(object sender, RoutedEventArgs e)
         {
             string name = txtMemberName.Text.Trim();
             string password = txtPassWord.Password.Trim();
-            string sql = "select * from [user] where [name] = '" + name + "' and [password] = '" + password + "'";
-            
-            string sql2 = "select is_manager from [user] where [name] = '" + name + "'";
-            //update user isFirstLogi,if the first login, user table of isFirstLogin=false
-            string sql3 = "update [user] set [is_first] = false where [is_first] = true and [name]='" + name + "'";
 
             if (name != "" && password != "")
             {
-                try
-                {
-                    connection.Open();
-
-                    //update user is_first
-                    OleDbCommand sqlcmd3 = new OleDbCommand(sql3, connection);
-                    sqlcmd3.ExecuteNonQuery();
-
-
-                    OleDbCommand sqlcmd = new OleDbCommand(sql, connection);
-                    OleDbDataReader reader = sqlcmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        
-                        OleDbCommand sqlcmd2 = new OleDbCommand(sql2, connection);
-                        OleDbDataReader dr = sqlcmd2.ExecuteReader();
-                        
-                        MainWindow main = new MainWindow();
-                        main.Show();
-                        Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Username and password don't match, please try again！");
-                    }
-                    reader.Close();
-                    
-                }
-                catch
-                {
-                    MessageBox.Show("Connect Failed!");
-                }
-                finally
-                {
-                    connection.Close();
-                }
+                string dbPath = "Data Source = " + Environment.CurrentDirectory + "/ManoirRamezayDB.db";
+                sqlCon = new SQLiteConnection(dbPath);
+                sqlCon.Open();
+                string sql = "SELECT COUNT (*) FROM USER WHERE USERNAME = " + name + " AND WHERE PASSWORD = " + password;
+                SQLiteCommand checkUserNameAn = new SQLiteCommand(sql, sqlCon);
             }
             else if (name == "")
             {

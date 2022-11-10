@@ -324,7 +324,7 @@ namespace HotelManagementSystem {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/HotelManagementSystem;component/checkoutwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ManiorRamezay;component/checkoutwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\CheckOutWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
